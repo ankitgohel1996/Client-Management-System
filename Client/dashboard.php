@@ -7,9 +7,20 @@
 
 <?php
 
+session_start();
 include('index.php');
 
+if (!isset($_SESSION['userid'])) 
+{
+	header('Location: login.html');
+}
+
 $userid = $_GET['userid'];
+
+if($_SESSION['userid']!=$userid)
+{
+	header('Location: login.html');
+}
 
 $sqlname= "SELECT username FROM user WHERE userid='$userid'";
 $name= $conn->query($sqlname);
@@ -63,6 +74,8 @@ if($result->num_rows)
 echo "</table>";
 		
 ?>
+
+<a href="logout.php">Logout </a>
 </body>
 
 </html>

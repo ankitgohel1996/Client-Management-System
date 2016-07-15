@@ -8,7 +8,15 @@
 
 <?php
 
+session_start();
 include('index.php');
+
+
+if (!isset($_SESSION['username'])) 
+{
+	header('Location: login.html');
+}
+
 
 $sql = "SELECT * FROM user";
 $result = $conn->query($sql);
