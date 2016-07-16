@@ -6,8 +6,14 @@
 <body>
 
 <?php
+session_start();
 
 include('index.php');
+
+if (!isset($_SESSION['username'])) 
+{
+	header('Location: login.html');
+}
 
 $userid = $_GET['userid'];
 $sql = "SELECT * FROM project WHERE userid='$userid'";

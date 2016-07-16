@@ -29,7 +29,13 @@ function renderForm($projectid,$taskname,$taskcost, $progress)
 <?php
 }
 
+session_start();
 include('index.php');
+
+if (!isset($_SESSION['username'])) 
+{
+	header('Location: login.html');
+}
 
 if (isset($_POST['submit']))
 {

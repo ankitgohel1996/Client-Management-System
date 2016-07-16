@@ -29,7 +29,14 @@ function renderForm($userid, $username, $password)
 <?php
 }
 
+session_start();
+
 include('index.php');
+
+if (!isset($_SESSION['username'])) 
+{
+	header('Location: login.html');
+}
 
 if (isset($_POST['submit']))
 {

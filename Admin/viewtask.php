@@ -7,7 +7,14 @@
 
 <?php
 
+session_start();
+
 include('index.php');
+
+if (!isset($_SESSION['username'])) 
+{
+	header('Location: login.html');
+}
 
 $projectid = $_GET['projectid'];
 $sql = "SELECT * FROM task WHERE projectid='$projectid'";
